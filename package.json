@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "react-dom/server.renderToString ./app.js > ./build/index.html",
+    "build": "react-dom/server.renderToString ./pin/app.js > ./build/index.html",
     "start": "node ./bin/www"
   },
   "dependencies": {
