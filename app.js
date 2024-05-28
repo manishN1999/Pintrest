@@ -3,8 +3,8 @@ var express = require('express');
 var path = require('path'); 
 var cookieParser = require('cookie-parser'); 
 var logger = require('morgan'); 
-const expressSession = require("express-session"); 
- 
+const session = require('express-session')
+const MemoryStore = require('memorystore')(session)
 var indexRouter = require('./routes/index'); 
 var usersRouter = require('./routes/users'); 
 const passport = require('passport'); 
@@ -15,11 +15,19 @@ var app = express();
 app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs'); 
  
-app.use(expressSession({ 
-  resave:false, 
-  saveUninitialized: false, 
-  secret: "hey hero" 
-})); 
+// app.use(expressSession({ 
+//   resave:false, 
+//   saveUninitialized: false, 
+//   secret: "hey hero" 
+// })); 
+app.use(session({
+  cookie: { maxAge: 86400000 },
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
+  resave: false,
+  secret: 'keyboard cat'
+}))
 app.use(passport.initialize()); 
 app.use(passport.session()); 
 passport.serializeUser(usersRouter.serializeUser()); 
