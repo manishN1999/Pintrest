@@ -11,12 +11,37 @@
 </head>
 <body>
   <% if(nav === true){ %>
-    <div class="w-full h-full px-10 py-3  flex justify-between items-center text-black">
+    <div class="w-half h-half px-10 py-3  flex justify-between items-center bg-zinc-800 text-white">
       <img class="w-32 h-38 object-cover" src="https://1000logos.net/wp-content/uploads/2018/03/Pinterest-logo.png" alt="">
       <div class="flex gap-10 items-center">
         <a class="px-3 py-2 hover:bg-red-700 transition delay-150 hover:text-white" href="/profile">Profile</a>
          <a class="px-3 py-2 hover:bg-red-700 transition delay-150 hover:text-white" href="/feed">Feed</a>
          <a class ="px-3 py-2 bg-red-700 text-white rounded-lg" href="/logout">Logout</a>
       </div>
+      <button id="menuButton" class="lg:hidden focus:outline-none text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16v12H4zm2-2a2 2 0 10-4 0 2 2 0 004 0zM2 16a2 2 0 104 0 2 2 0 00-4 0z" />
+        </svg>
+      </button>
+    </div>
+      <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 hidden z-40">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg p-4 shadow-lg">
+          <a class="block px-3 py-2 hover:bg-gray-700 transition delay-150 hover:text-red-500" href="/profile">Profile</a>
+          <a class="block px-3 py-2 hover:bg-gray-700 transition delay-150 hover:text-red-500" href="/feed">Feed</a>
+          <a class="block px-3 py-2 hover:bg-gray-700 transition delay-150 hover:text-red-500" href="/logout">Logout</a>
+        </div>
+    </div>
       </div>
   <% } %>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    if (menuButton) {
+      menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+    </script>
+    </body>
+    </html>
