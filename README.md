@@ -136,7 +136,3 @@ Render for free deployment service
 
 ⭐ Support the Project
 If you found this project helpful or interesting, consider giving it a ⭐ on GitHub. Your support is appreciated!
-
-yaml
-Copy
-Edit
